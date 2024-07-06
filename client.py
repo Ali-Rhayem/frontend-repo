@@ -1,4 +1,5 @@
 import yaml
+import os
 
 class Client:
     def __init__(self, config):
@@ -9,7 +10,8 @@ class Client:
             print("Running on localhost")
 
 if __name__ == "__main__":
-    with open('config.yaml', 'r') as file:
+    config_path = os.path.join(os.path.dirname(__file__), '../config.yaml')
+    with open(config_path, 'r') as file:
         config = yaml.safe_load(file)
     client = Client(config)
     client.run()
